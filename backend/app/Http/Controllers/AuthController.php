@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 
+
 class AuthController extends Controller
 {
     public function index()
@@ -33,6 +34,7 @@ class AuthController extends Controller
     public function login()
     {
         $credentials = request(['email', 'password']);
+        
 
         if (! $token = auth()->attempt($credentials)) {
             return response()->json(['error' => 'Unauthorized'], 401);
@@ -81,7 +83,7 @@ class AuthController extends Controller
      */
     public function refresh()
     {
-        return $this->respondWithToken(auth()->refresh());
+        return $this->respondWithToken(auth()-> refresh());
     }
 
     /**
